@@ -1200,14 +1200,13 @@ body {
 /* ---------- Detalles Section ---------- */
 .detalles {
     position: relative;
-    background: rgba(15, 23, 42, 0.85);
+    background: linear-gradient(180deg, var(--navy) 0%, #0d1525 100%);
     padding: 80px 0;
 }
 
 .section-background {
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, var(--navy) 0%, #0d1525 100%);
     z-index: 0;
 }
 
@@ -1231,12 +1230,16 @@ body {
 
 .detalle-card {
     background: #ffffff;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(135, 206, 235, 0.3);
+    border: 2px solid rgba(135, 206, 235, 0.4);
     border-radius: 16px;
     padding: 35px 25px;
     text-align: center;
     transition: all 0.4s ease;
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    position: relative;
+    z-index: 2;
 }
 
 .detalle-card:hover {
@@ -1317,8 +1320,26 @@ body {
     }
 }
 
-#detalles.detalle-card { display: block !important; opacity: 1 !important; }
-#detalles .detalle-card { display: block !important; opacity: 1 !important; }
+#detalles {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.detalles .container {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+.detalles .detalle-card,
+.detalles-grid .detalle-card {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    background: #ffffff !important;
+    position: relative !important;
+}
 
 /* ================================
    REGALOS
