@@ -2,9 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================
     // DOM ELEMENTS
     // =====================
-    const envelopeScreen = document.getElementById('envelopeScreen');
-    const envelope = document.getElementById('envelope');
-    const envelopeSeal = document.getElementById('envelopeSeal');
     const loadingScreen = document.getElementById('loadingScreen');
     const mainContent = document.getElementById('mainContent');
     const audio = document.getElementById('bgMusic');
@@ -19,149 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const lightboxClose = document.getElementById('lightboxClose');
     const whatsappBtn = document.getElementById('whatsappBtn');
     const dropdownMenu = document.getElementById('dropdownMenu');
-    const burstEffect = document.getElementById('burstEffect');
-    const openEffects = document.getElementById('openEffects');
 
     let isPlaying = false;
     let hasInteracted = false;
-    let envelopeOpened = false;
-
-    // =====================
-    // ENVELOPE SCREEN
-    // =====================
-    function initEnvelope() {
-        createStars();
-        createParticles();
-        animateEnvelope();
-        animateFloating();
-    }
-
-    function createStars() {
-        const stars = document.getElementById('envStars');
-        for (let i = 0; i < 70; i++) {
-            const star = document.createElement('div');
-            star.className = 'env-star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = Math.random() * 3 + 's';
-            stars.appendChild(star);
-        }
-    }
-
-    function createParticles() {
-        const particles = document.getElementById('envParticles');
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'env-particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 8 + 's';
-            particle.style.animationDuration = (6 + Math.random() * 6) + 's';
-            particles.appendChild(particle);
-        }
-    }
-
-    function animateEnvelope() {
-        gsap.fromTo(envelope, 
-            { opacity: 0, y: 80, scale: 0.9 },
-            { opacity: 1, y: 0, scale: 1, duration: 1.5, ease: 'back.out(1.4)', delay: 0.5 }
-        );
-        gsap.fromTo('.tap-hint',
-            { opacity: 0, y: 20 },
-            { opacity: 1, y: 0, duration: 1, delay: 2 }
-        );
-    }
-
-    function animateFloating() {
-        const container = document.getElementById('floatingElements');
-        const icons = ['fa-heart', 'fa-sparkles', 'fa-star'];
-        
-        setInterval(() => {
-            const el = document.createElement('div');
-            el.className = 'floating-element';
-            el.innerHTML = `<i class="fas ${icons[Math.floor(Math.random() * icons.length)]}"></i>`;
-            el.style.left = Math.random() * 100 + '%';
-            el.style.top = '80%';
-            container.appendChild(el);
-            
-            setTimeout(() => el.remove(), 6000);
-        }, 500);
-    }
-
-    envelope.addEventListener('click', openEnvelope);
-    envelopeSeal.addEventListener('click', (e) => {
-        e.stopPropagation();
-        openEnvelope();
-    });
-
-    function openEnvelope() {
-        if (envelopeOpened) return;
-        envelopeOpened = true;
-
-        gsap.to('.tap-hint', { opacity: 0, duration: 0.3 });
-        envelope.classList.add('opened');
-
-        setTimeout(() => {
-            createBurst();
-            createConfetti();
-        }, 400);
-
-        setTimeout(() => {
-            envelopeScreen.classList.add('hidden');
-            loadingScreen.classList.add('active');
-            initMain();
-        }, 2000);
-    }
-
-    function createBurst() {
-        burstEffect.classList.add('active');
-        openEffects.classList.add('active');
-        setTimeout(() => burstEffect.classList.remove('active'), 1500);
-    }
-
-    function createConfetti() {
-        const container = document.createElement('div');
-        container.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:9999;overflow:hidden';
-        document.body.appendChild(container);
-
-        for (let i = 0; i < 70; i++) {
-            const confetti = document.createElement('div');
-            const isHeart = Math.random() > 0.5;
-            const color = isHeart ? '#87CEEB' : '#5BA4D4';
-            confetti.innerHTML = `<i class="fas ${isHeart ? 'fa-heart' : 'fa-sparkles'}" style="color:${color};font-size:${0.8 + Math.random() * 1.5}rem"></div>`;
-            
-            const startX = window.innerWidth / 2;
-            const startY = window.innerHeight / 2;
-            
-            confetti.style.cssText = `
-                position: absolute;
-                left: ${startX}px;
-                top: ${startY}px;
-            `;
-            
-            container.appendChild(confetti);
-            
-            gsap.to(confetti, {
-                x: gsap.utils.random(-500, 500),
-                y: gsap.utils.random(-600, -50),
-                rotation: gsap.utils.random(-1080, 1080),
-                opacity: 1,
-                scale: gsap.utils.random(0.5, 2),
-                duration: 3,
-                delay: Math.random() * 0.5,
-                ease: 'power3.out',
-                onComplete: () => {
-                    gsap.to(confetti, {
-                        opacity: 0,
-                        y: '+=150',
-                        duration: 0.8,
-                        onComplete: () => confetti.remove()
-                    });
-                }
-            });
-        }
-        
-        setTimeout(() => container.remove(), 5000);
-    }
 
     // =====================
     // MAIN CONTENT
@@ -233,6 +90,21 @@ document.addEventListener('DOMContentLoaded', () => {
             p.style.opacity = Math.random() * 0.15 + 0.05;
             footerParticles.appendChild(p);
         }
+        
+        // Detalles particles
+        const detallesParticles = document.getElementById('detallesParticles');
+        if (detallesParticles) {
+            for (let i = 0; i < 25; i++) {
+                const p = document.createElement('div');
+                p.className = 'section-particle';
+                p.style.cssText = `
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    animation-delay: ${Math.random() * 10}s;
+                `;
+                detallesParticles.appendChild(p);
+            }
+        }
     }
 
     // =====================
@@ -259,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             e.stopPropagation();
             tryPlay();
-
+ 
             if (isPlaying) {
                 audio.pause();
                 isPlaying = false;
@@ -278,73 +150,89 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================
     // WHATSAPP DROPDOWN
     // =====================
-    whatsappBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        dropdownMenu.classList.toggle('active');
-    });
+    if (whatsappBtn && dropdownMenu) {
+        whatsappBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('active');
+        });
 
-    document.addEventListener('click', (e) => {
-        if (!whatsappBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
-            dropdownMenu.classList.remove('active');
-        }
-    });
+        document.addEventListener('click', (e) => {
+            if (!whatsappBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
+                dropdownMenu.classList.remove('active');
+            }
+        });
+    }
 
     // =====================
     // VIDEO CONTROL
     // =====================
-    playBtn.addEventListener('click', () => {
-        weddingVideo.play();
-        videoBox.classList.add('playing');
-    });
-
-    weddingVideo.addEventListener('click', () => {
-        if (weddingVideo.paused) {
+    if (playBtn && weddingVideo && videoBox) {
+        playBtn.addEventListener('click', () => {
             weddingVideo.play();
             videoBox.classList.add('playing');
-        } else {
-            weddingVideo.pause();
-            videoBox.classList.remove('playing');
-        }
-    });
+        });
+
+        weddingVideo.addEventListener('click', () => {
+            if (weddingVideo.paused) {
+                weddingVideo.play();
+                videoBox.classList.add('playing');
+            } else {
+                weddingVideo.pause();
+                videoBox.classList.remove('playing');
+            }
+        });
+    }
 
     // =====================
     // GALLERY LIGHTBOX
     // =====================
-    galleryItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const img = item.querySelector('img');
-            lightboxImg.src = img.src;
-            lightbox.classList.add('active');
-            document.body.style.overflow = 'hidden';
+    if (galleryItems.length > 0) {
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                if (img && lightboxImg && lightbox) {
+                    lightboxImg.src = img.src;
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
         });
-    });
 
-    lightboxClose.addEventListener('click', closeLightbox);
-    lightbox.addEventListener('click', (e) => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-            closeLightbox();
+        if (lightboxClose) {
+            lightboxClose.addEventListener('click', closeLightbox);
         }
-    });
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) closeLightbox();
+            });
+        }
 
-    function closeLightbox() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        function closeLightbox() {
+            if (lightbox) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Lazy load images
+        galleryItems.forEach(item => {
+            const img = item.querySelector('img');
+            if (img) {
+                if (img.complete) {
+                    img.classList.add('loaded');
+                } else {
+                    img.addEventListener('load', () => img.classList.add('loaded'));
+                }
+            }
+        });
     }
-
-    // Lazy load images
-    galleryItems.forEach(item => {
-        const img = item.querySelector('img');
-        if (img.complete) {
-            img.classList.add('loaded');
-        } else {
-            img.addEventListener('load', () => img.classList.add('loaded'));
-        }
-    });
 
     // =====================
     // COUNTDOWN
@@ -367,16 +255,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animateNumber(id, value) {
         const el = document.getElementById(id);
-        const newValue = String(value).padStart(2, '0');
-        if (el.textContent !== newValue) {
-            gsap.to(el, {
-                scale: 1.15,
-                duration: 0.1,
-                onComplete: () => {
-                    el.textContent = newValue;
-                    gsap.to(el, { scale: 1, duration: 0.1 });
-                }
-            });
+        if (el) {
+            const newValue = String(value).padStart(2, '0');
+            if (el.textContent !== newValue) {
+                gsap.to(el, {
+                    scale: 1.15,
+                    duration: 0.1,
+                    onComplete: () => {
+                        el.textContent = newValue;
+                        gsap.to(el, { scale: 1, duration: 0.1 });
+                    }
+                });
+            }
         }
     }
 
@@ -421,96 +311,99 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Parents
-        gsap.from('.parent-card', {
-            scrollTrigger: { trigger: '.parents', start: 'top 80%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 60, duration: 1, stagger: 0.25
-        });
-        gsap.from('.parent-heart', {
-            scrollTrigger: { trigger: '.parents', start: 'top 75%', toggleActions: 'play none none reverse' },
-            opacity: 0, scale: 0, rotation: -180, duration: 1, ease: 'back.out(1.7)'
-        });
+        const parentCards = document.querySelectorAll('.parent-card');
+        if (parentCards.length > 0) {
+            gsap.from('.parent-card', {
+                scrollTrigger: { trigger: '.parents', start: 'top 80%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 60, duration: 1, stagger: 0.25
+            });
+            gsap.from('.parent-heart', {
+                scrollTrigger: { trigger: '.parents', start: 'top 75%', toggleActions: 'play none none reverse' },
+                opacity: 0, scale: 0, rotation: -180, duration: 1, ease: 'back.out(1.7)'
+            });
+        }
 
         // Gallery
-        gsap.from('.gallery-item', {
-            scrollTrigger: { trigger: '.gallery', start: 'top 80%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 70, duration: 0.8, stagger: 0.1
-        });
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        if (galleryItems.length > 0) {
+            gsap.from('.gallery-item', {
+                scrollTrigger: { trigger: '.gallery', start: 'top 80%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 70, duration: 0.8, stagger: 0.1
+            });
+        }
 
         // Video
-        gsap.from('.video-box', {
-            scrollTrigger: { trigger: '.video-section', start: 'top 70%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 60, scale: 0.95, duration: 1.2
-        });
+        const videoBox = document.querySelector('.video-box');
+        if (videoBox) {
+            gsap.from('.video-box', {
+                scrollTrigger: { trigger: '.video-section', start: 'top 70%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 60, scale: 0.95, duration: 1.2
+            });
+        }
 
-        // Detalles animation
-        gsap.from('.detalle-card', {
-            scrollTrigger: {
-                trigger: '.detalles',
-                start: 'top 80%'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 0.8,
-            stagger: 0.2
-        });
-
-        // Detalles particles
-        const detallesParticles = document.getElementById('detallesParticles');
-        if (detallesParticles) {
-            for (let i = 0; i < 25; i++) {
-                const p = document.createElement('div');
-                p.className = 'section-particle';
-                p.style.cssText = `
-                    left: ${Math.random() * 100}%;
-                    top: ${Math.random() * 100}%;
-                    animation-delay: ${Math.random() * 10}s;
-                `;
-                detallesParticles.appendChild(p);
-            }
+        // Detalles
+        const detalleCards = document.querySelectorAll('.detalle-card');
+        if (detalleCards.length > 0) {
+            gsap.from('.detalle-card', {
+                scrollTrigger: { trigger: '.detalles', start: 'top 80%' },
+                opacity: 0, y: 50, duration: 0.8, stagger: 0.2
+            });
         }
 
         // Regalos
-        gsap.from('.regalo-card', {
-            scrollTrigger: { trigger: '.regalos', start: 'top 80%', toggleActions: 'play none none reverse' },
-            opacity: 0, scale: 0.8, y: 50, duration: 1, ease: 'back.out(1.4)'
-        });
+        const regaloCard = document.querySelector('.regalo-card');
+        if (regaloCard) {
+            gsap.from('.regalo-card', {
+                scrollTrigger: { trigger: '.regalos', start: 'top 80%', toggleActions: 'play none none reverse' },
+                opacity: 0, scale: 0.8, y: 50, duration: 1, ease: 'back.out(1.4)'
+            });
+        }
 
         // RSVP
-        gsap.from('.rsvp-icon', {
-            scrollTrigger: { trigger: '.rsvp', start: 'top 75%', toggleActions: 'play none none reverse' },
-            opacity: 0, scale: 0, duration: 0.8, ease: 'back.out(1.7)'
-        });
-        gsap.from('.rsvp-question', {
-            scrollTrigger: { trigger: '.rsvp', start: 'top 70%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 80, duration: 1.2, delay: 0.2
-        });
-        gsap.from('.rsvp-text', {
-            scrollTrigger: { trigger: '.rsvp', start: 'top 60%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 40, duration: 0.8, delay: 0.4
-        });
-        gsap.from('.rsvp-btn', {
-            scrollTrigger: { trigger: '.rsvp', start: 'top 55%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 30, scale: 0.9, duration: 0.8, delay: 0.5, ease: 'back.out(1.4)'
-        });
+        const rsvpSection = document.querySelector('.rsvp');
+        if (rsvpSection) {
+            gsap.from('.rsvp-icon', {
+                scrollTrigger: { trigger: '.rsvp', start: 'top 75%', toggleActions: 'play none none reverse' },
+                opacity: 0, scale: 0, duration: 0.8, ease: 'back.out(1.7)'
+            });
+            gsap.from('.rsvp-question', {
+                scrollTrigger: { trigger: '.rsvp', start: 'top 70%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 80, duration: 1.2, delay: 0.2
+            });
+            gsap.from('.rsvp-text', {
+                scrollTrigger: { trigger: '.rsvp', start: 'top 60%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 40, duration: 0.8, delay: 0.4
+            });
+            gsap.from('.rsvp-btn', {
+                scrollTrigger: { trigger: '.rsvp', start: 'top 55%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 30, scale: 0.9, duration: 0.8, delay: 0.5, ease: 'back.out(1.4)'
+            });
+        }
 
         // Footer
-        gsap.from('.footer-hearts i', {
-            scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none reverse' },
-            opacity: 0, scale: 0, duration: 0.5, stagger: 0.15, ease: 'back.out(1.7)'
-        });
-        gsap.from('.footer-names', {
-            scrollTrigger: { trigger: '.footer', start: 'top 85%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 30, duration: 1, delay: 0.3
-        });
-        gsap.from('.footer-date, .footer-tag', {
-            scrollTrigger: { trigger: '.footer', start: 'top 80%', toggleActions: 'play none none reverse' },
-            opacity: 0, y: 20, duration: 0.8, stagger: 0.15, delay: 0.5
-        });
+        const footer = document.querySelector('.footer');
+        if (footer) {
+            gsap.from('.footer-hearts i', {
+                scrollTrigger: { trigger: '.footer', start: 'top 90%', toggleActions: 'play none none reverse' },
+                opacity: 0, scale: 0, duration: 0.5, stagger: 0.15, ease: 'back.out(1.7)'
+            });
+            gsap.from('.footer-names', {
+                scrollTrigger: { trigger: '.footer', start: 'top 85%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 30, duration: 1, delay: 0.3
+            });
+            gsap.from('.footer-date, .footer-tag', {
+                scrollTrigger: { trigger: '.footer', start: 'top 80%', toggleActions: 'play none none reverse' },
+                opacity: 0, y: 20, duration: 0.8, stagger: 0.15, delay: 0.5
+            });
+        }
 
         // Floating buttons
-        gsap.from('.float-btns', {
-            opacity: 0, x: 100, duration: 1, delay: 0.5
-        });
+        const floatBtns = document.querySelector('.float-btns');
+        if (floatBtns) {
+            gsap.from('.float-btns', {
+                opacity: 0, x: 100, duration: 1, delay: 0.5
+            });
+        }
     }
 
     // =====================
@@ -589,6 +482,8 @@ document.addEventListener('DOMContentLoaded', () => {
         cursorGlow.style.opacity = '0';
     });
 
-    // Initialize envelope
-    initEnvelope();
+    // =====================
+    // INITIALIZE
+    // =====================
+    initMain();
 });
