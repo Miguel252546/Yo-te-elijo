@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación de Boda - Isabella & Carlos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" type="audio/mpeg">
+    </audio>
+
+    <main class="main-content" id="mainContent">
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <div class="hero-overlay"></div>
+                <div class="hero-image"></div>
+                <div class="hero-particles" id="heroParticles"></div>
+                <div class="hero-rays">
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                    <div class="ray"></div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <p class="hero-subtitle">Estamos preparando todo para recibirte</p>
+                <div class="hero-names">
+                    <span class="name">Yda</span>
+                    <span class="amp">&</span>
+                    <span class="name">Emi</span>
+                </div>
+                <div class="hero-date-row">
+                    <span class="line"></span>
+                    <span class="date">15 de Mayo, 2027</span>
+                    <span class="line"></span>
+                </div>
+                <div class="hero-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Hacienda Los Alpes, Bogotá</span>
+                </div>
+                <a href="#rsvp" class="hero-btn">
+                    <span>Ver Invitación</span>
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-line"></div>
+            </div>
+        </section>
+
+        <!-- Opening -->
+        <section class="section opening" id="opening">
+            <div class="section-particles" id="openingParticles"></div>
+            <div class="container">
+                <div class="opening-inner">
+                    <div class="deco-line">
+                        <span></span>
+                        <i class="fas fa-heart"></i>
+                        <span></span>
+                    </div>
+                    <p class="opening-text">
+                        Con el corazón lleno de alegría y la emoción de compartir este momento único,<br>
+                        te invitamos a ser parte de nuestra historia de amor.
+                    </p>
+                    <div class="names-line">
+                        <span>Yda</span>
+                        <span class="and">&</span>
+                        <span>Emi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Countdown -->
+        <section class="section countdown" id="countdown">
+            <div class="countdown-particles" id="countdownParticles"></div>
+            <div class="container">
+                <h2 class="section-title light">Falta poco para el gran día</h2>
+                <div class="countdown-grid">
+                    <div class="count-box">
+                        <div class="count-glow"></div>
+                        <span class="count-num" id="days">00</span>
+                        <span class="count-label">Días</span>
+                    </div>
+                    <span class="count-sep">:</span>
+                    <div class="count-box">
+                        <div class="count-glow"></div>
+                        <span class="count-num" id="hours">00</span>
+                        <span class="count-label">Horas</span>
+                    </div>
+                    <span class="count-sep">:</span>
+                    <div class="count-box">
+                        <div class="count-glow"></div>
+                        <span class="count-num" id="minutes">00</span>
+                        <span class="count-label">Minutos</span>
+                    </div>
+                    <span class="count-sep">:</span>
+                    <div class="count-box">
+                        <div class="count-glow"></div>
+                        <span class="count-num" id="seconds">00</span>
+                        <span class="count-label">Segundos</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Parents -->
+        <!-- <section class="section parents" id="parents">
+            <div class="container">
+                <h2 class="section-title light">Con la bendición de nuestros padres</h2>
+                <div class="parents-grid">
+                    <div class="parent-card">
+                        <span class="parent-label">Padres de la Novia</span>
+                        <div class="parent-names">
+                            <p>María Elena Gutiérrez</p>
+                            <p>Roberto Alejandro Mendoza</p>
+                        </div>
+                    </div>
+                    <div class="parent-heart">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="parent-card">
+                        <span class="parent-label">Padres del Novio</span>
+                        <div class="parent-names">
+                            <p>Carmen Lucía Pérez</p>
+                            <p>Andrés Felipe Ramírez</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Gallery -->
+        <section class="section gallery" id="gallery">
+            <div class="container">
+                <h2 class="section-title light">Nuestros momentos</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item big">
+                        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" alt="Foto de pareja 1">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1529636798458-92182e662485?w=600&q=80" alt="Foto de pareja 2">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=600&q=80" alt="Foto de pareja 3">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=600&q=80" alt="Foto de pareja 4">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?w=600&q=80" alt="Foto de pareja 5">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item big">
+                        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80" alt="Foto de pareja 6">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video -->
+        <section class="section video-section" id="video">
+            <div class="container">
+                <h2 class="section-title light">Our Love Story</h2>
+                <div class="video-box">
+                    <video id="weddingVideo" poster="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&q=80" muted playsinline>
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    </video>
+                    <div class="play-btn" id="playBtn">
+                        <div class="play-ring"></div>
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+                <p class="video-hint">Toca para reproducir</p>
+            </div>
+        </section>
+
+        <!-- Details -->
+        <!-- <section class="section details" id="details">
+            <div class="container">
+                <h2 class="section-title light">Detalles del Evento</h2>
+                <div class="details-grid">
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <h3>Ceremonia Religiosa</h3>
+                        <div class="detail-time">3:00 PM</div>
+                        <div class="detail-place">Capilla San Ignacio</div>
+                        <div class="detail-address">Calle 72 #10-07, Bogotá</div>
+                        <a href="https://maps.google.com/?q=Capilla+San+Ignacio+Bogota" target="_blank" class="detail-btn">
+                            <i class="fas fa-directions"></i>
+                            Cómo llegar
+                        </a>
+                    </div>
+                    <div class="detail-card featured">
+                        <div class="detail-badge">Principal</div>
+                        <div class="detail-icon">
+                            <i class="fas fa-champagne-glasses"></i>
+                        </div>
+                        <h3>Recepción</h3>
+                        <div class="detail-time">6:00 PM</div>
+                        <div class="detail-place">Hacienda Los Alpes</div>
+                        <div class="detail-address">Km 12 Vía La Calera, Bogotá</div>
+                        <a href="https://maps.google.com/?q=Hacienda+Los+Alpes+Bogota" target="_blank" class="detail-btn primary">
+                            <i class="fas fa-directions"></i>
+                            Cómo llegar
+                        </a>
+                    </div>
+                    <div class="detail-card">
+                        <div class="detail-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <h3>Cena & Celebración</h3>
+                        <div class="detail-time">7:30 PM</div>
+                        <div class="detail-place">Salón Principal</div>
+                        <div class="detail-address">Traje formal elegante</div>
+                        <span class="dress-code">
+                            <i class="fas fa-tshirt"></i>
+                            Código de vestimenta
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <section id="detalles" class="detalles" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+            <div class="section-background"></div>
+            <div class="container" style="display: block !important; visibility: visible !important; opacity: 1 !important;">
+                <h2 class="section-title reveal-fade">Detalles del Evento</h2>
+
+                <div class="detalles-grid">
+                    <div class="detalle-card reveal-fade" data-delay="0" style="display: block !important; visibility: visible !important; opacity: 1 !important; background: #ffffff;">
+                        <div class="detalle-icon">
+                            <i class="far fa-calendar"></i>
+                        </div>
+                        <h3>Fecha del Evento</h3>
+                        <p>15 de Mayo de 2027</p>
+                    </div>
+
+                    <div class="detalle-card reveal-fade" data-delay="100" style="display: block !important; visibility: visible !important; opacity: 1 !important; background: #ffffff;">
+                        <div class="detalle-icon">
+                            <i class="far fa-clock"></i>
+                        </div>
+                        <h3>Hora del Evento</h3>
+                        <p>18:00 horas</p>
+                    </div>
+
+                    <div class="detalle-card reveal-fade" data-delay="200" style="display: block !important; visibility: visible !important; opacity: 1 !important; background: #ffffff;">
+                        <div class="detalle-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Lugar del Evento</h3>
+                        <p>Salón Bolgheri</p>
+                        <p class="direccion">Santiago Derqui 703, X5105 Villa Allende, Córdoba</p>
+                        <a href="https://maps.app.goo.gl/gf9b5vFtXw4Xs3hMA" target="_blank" class="detalle-btn">
+                            <i class="fas fa-external-link-alt"></i>
+                            Ver en Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Regalos -->
+        <section id="regalos" class="section regalos">
+            <div class="container">
+                <h2 class="section-title light">Mesa de Regalos</h2>
+                <div class="regalo-card">
+                    <div class="regalo-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <p class="regalo-texto">Tu presencia es el mejor regalo. Pero si deseas colaborarnos, aquí encontrarás toda la información.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP -->
+        <section class="section rsvp" id="rsvp">
+            <div class="rsvp-particles" id="rsvpParticles"></div>
+            <div class="container">
+                <div class="rsvp-box">
+                    <div class="rsvp-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h2 class="rsvp-question">¿Nos vas a acompañar?</h2>
+                    <p class="rsvp-text">Tu presencia será el mejor regalo. Pero si deseas obsequiarnos algo, nuestra honeymoon está esperando.</p>
+                    <a href="https://forms.google.com/rsvp-wedding" target="_blank" class="rsvp-btn">
+                        <span>Confirmar Asistencia</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-particles" id="footerParticles"></div>
+            <div class="footer-hearts">
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+                <i class="fas fa-heart"></i>
+            </div>
+            <p class="footer-names">Yda & Emi</p>
+            <p class="footer-date">15 de Mayo, 2027</p>
+            <p class="footer-tag">#YdaYEmi2027</p>
+        </footer>
+
+        <!-- Floating Buttons -->
+        <div class="float-btns">
+            <button class="float-btn music-btn" id="musicBtn">
+                <i class="fas fa-music" id="musicIcon"></i>
+                <div class="btn-wave"></div>
+            </button>
+            <div class="float-dropdown">
+                <button class="float-btn whatsapp-btn" id="whatsappBtn">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+                <div class="dropdown-menu" id="dropdownMenu">
+                    <p class="dropdown-title">Contactar a:</p>
+                    <a href="https://wa.me/573001234567?text=Hola%20Yda%2C%20quiero%20consultarte%20algo%20sobre%20la%20boda" target="_blank" class="dropdown-item">
+                        <i class="fas fa-female"></i>
+                        <span>Yda</span>
+                    </a>
+                    <a href="https://wa.me/5493516177173?text=Hola%20Emi%2C%20quiero%20consultarte%20algo%20sobre%20la%20boda" target="_blank" class="dropdown-item">
+                        <i class="fas fa-male"></i>
+                        <span>Emi</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // =====================
     // DOM ELEMENTS
     // =====================
-    const loadingScreen = document.getElementById('loadingScreen');
     const mainContent = document.getElementById('mainContent');
     const audio = document.getElementById('bgMusic');
     const musicBtn = document.getElementById('musicBtn');
@@ -24,22 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // MAIN CONTENT
     // =====================
     function initMain() {
-        setTimeout(() => {
-            loadingScreen.classList.remove('active');
-            mainContent.style.display = 'block';
-            mainContent.style.opacity = '0';
-            
-            gsap.to(mainContent, {
-                opacity: 1,
-                duration: 1,
-                onComplete: () => {
-                    initParticles();
-                    initAnimations();
-                    initMusic();
-                    initScrollAnimations();
-                }
-            });
-        }, 1500);
+        mainContent.style.display = 'block';
+        mainContent.style.opacity = '0';
+        
+        gsap.to(mainContent, {
+            opacity: 1,
+            duration: 1,
+            onComplete: () => {
+                initParticles();
+                initAnimations();
+                initMusic();
+                initScrollAnimations();
+            }
+        });
     }
 
     // =====================
