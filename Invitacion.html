@@ -638,36 +638,45 @@
             pLayer.appendChild(p);
         }
         
-        // Floating background objects
+        // Floating background objects - POKÉBOLAS VISIBLES
         const bgLayer = document.getElementById('pokeBgLayer');
         const ballTypes = [
             ['#cc2010', '#111', '#f2ede8', '#cc2010'],
             ['#1848c8', '#111', '#f2ede8', '#cc2010'],
             ['#f0c800', '#111', '#f2ede8', '#1a1a1a'],
             ['#9020c0', '#111', '#f2ede8', '#e040e0'],
+            ['#388020', '#111', '#d8c870', '#c89000'],
+            ['#e860a0', '#f0b0c0', '#f0f0f0', '#e860a0'],
+            ['#0098c0', '#0070a0', '#e8f0f8', '#0098c0'],
+            ['#78b020', '#a8c840', '#f0ece0', '#78b020'],
         ];
         
+        // Posiciones distribuidas por toda la pantalla
         const ballPos = [
-            {l: '4%', t: '8%'}, {l: '90%', t: '14%'}, {l: '2%', t: '55%'}, {l: '92%', t: '50%'},
-            {l: '8%', t: '84%'}, {l: '88%', t: '82%'}, {l: '20%', t: '4%'}, {l: '76%', t: '6%'},
+            {l: '5%', t: '110%'}, {l: '85%', t: '110%'}, {l: '25%', t: '105%'}, {l: '65%', t: '108%'},
+            {l: '10%', t: '105%'}, {l: '90%', t: '105%'}, {l: '45%', t: '112%'}, {l: '55%', t: '110%'},
+            {l: '3%', t: '108%'}, {l: '95%', t: '112%'}, {l: '20%', t: '106%'}, {l: '75%', t: '109%'},
+            {l: '35%', t: '111%'}, {l: '60%', t: '107%'}, {l: '50%', t: '105%'}, {l: '15%', t: '110%'},
+            {l: '80%', t: '106%'}, {l: '40%', t: '108%'}, {l: '70%', t: '111%'}, {l: '30%', t: '109%'},
         ];
         
         ballTypes.forEach((t, i) => {
             if (ballPos[i]) {
                 const p = ballPos[i];
-                const sz = 20 + Math.random() * 20;
+                const sz = 35 + Math.random() * 30;
                 const div = document.createElement('div');
                 div.className = 'poke-bg-obj';
-                const dur = 14 + Math.random() * 18;
-                const del = Math.random() * 20;
-                const rot = (Math.random() - 0.5) * 380;
-                const ty = -(60 + Math.random() * 60);
-                const alp = 0.08 + Math.random() * 0.1;
+                const dur = 18 + Math.random() * 22;
+                const del = Math.random() * 30;
+                const rot = (Math.random() - 0.5) * 300;
+                const ty = -(180 + Math.random() * 100);
+                const alp = 0.15 + Math.random() * 0.12;
                 div.style.cssText = `left:${p.l};top:${p.t};width:${sz}px;height:${sz}px;--pbd:${dur}s;--pbdel:${del}s;--pbr:${rot}deg;--pbty:${ty}px;--pba:${alp};`;
                 div.innerHTML = `<svg width="${sz}" height="${sz}" viewBox="0 0 40 40">
-                    <circle cx="20" cy="20" r="19" fill="${t[0]}" stroke="rgba(0,0,0,0.28)" stroke-width="1"/>
+                    <circle cx="20" cy="20" r="19" fill="${t[0]}" stroke="rgba(0,0,0,0.4)" stroke-width="1.5"/>
                     <rect x="1" y="18" width="38" height="4" fill="${t[1]}"/>
-                    <circle cx="20" cy="20" r="5.5" fill="${t[3]}" stroke="${t[1]}" stroke-width="1.5"/>
+                    <circle cx="20" cy="20" r="6" fill="${t[3]}" stroke="${t[1]}" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="3.5" fill="rgba(255,255,255,0.4)"/>
                 </svg>`;
                 bgLayer.appendChild(div);
             }
