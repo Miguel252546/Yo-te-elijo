@@ -1072,8 +1072,113 @@ body {
 }
 
 /* ================================
+   HISTORIA - Nuestra Historia
+ ================================ */
+.historia {
+    background: linear-gradient(180deg, #0f1a2e 0%, var(--navy) 50%, var(--navy-light) 100%);
+    position: relative;
+}
+
+.historia-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.historia-timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--sky-main) 0%, var(--rose) 50%, var(--gold) 100%);
+    border-radius: 2px;
+}
+
+.historia-item {
+    position: relative;
+    width: 50%;
+    padding: 20px 40px;
+    box-sizing: border-box;
+}
+
+.historia-item.left { left: 0; text-align: right; }
+.historia-item.right { left: 50%; text-align: left; }
+
+.historia-dot {
+    position: absolute;
+    top: 30px;
+    width: 16px;
+    height: 16px;
+    background: var(--sky-main);
+    border-radius: 50%;
+    border: 3px solid var(--navy);
+    box-shadow: 0 0 20px var(--sky-glow), 0 0 40px rgba(212, 96, 122, 0.3);
+    z-index: 2;
+}
+
+.historia-item.left .historia-dot { right: -8px; }
+.historia-item.right .historia-dot { left: -8px; }
+
+.historia-content {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(135, 206, 235, 0.1);
+    border-radius: 16px;
+    padding: 28px;
+    transition: all 0.4s var(--ease);
+}
+
+.historia-content:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(135, 206, 235, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+.historia-date {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    color: var(--sky-main);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    padding: 4px 12px;
+    background: rgba(135, 206, 235, 0.1);
+    border-radius: 20px;
+}
+
+.historia-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+}
+
+.historia-text {
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    color: var(--sky-light);
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .historia-timeline::before { left: 20px; }
+    .historia-item { width: 100%; padding-left: 50px; padding-right: 20px; }
+    .historia-item.left, .historia-item.right { left: 0; text-align: left; }
+    .historia-item.left .historia-dot, .historia-item.right .historia-dot { left: 12px; right: auto; }
+}
+
+/* ================================
    DETAILS
-================================ */
+ ================================ */
 /* .details {
     background: linear-gradient(135deg, var(--navy) 0%, #1e3a5f 50%, var(--navy) 100%);
     text-align: center;
