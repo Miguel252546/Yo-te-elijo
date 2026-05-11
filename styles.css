@@ -1962,7 +1962,7 @@ body {
 .gallery-item img.loaded { opacity: 1; }
 
 /* ═══════════════════════════════════════════════════════
-   POKÉBALL OPENING
+   POKÉBALL OPENING - LIMPIO
    ═══════════════════════════════════════════════════════ */
 .poke-opening {
     position: fixed;
@@ -1985,7 +1985,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 10000;
-    background: linear-gradient(135deg, #fffaf2 0%, #f0d98a 50%, #d4607a 100%);
+    background: linear-gradient(135deg, var(--sky-main) 0%, var(--gold) 50%, var(--rose) 100%);
     opacity: 0;
     pointer-events: none;
 }
@@ -2169,8 +2169,8 @@ body {
 
 .poke-stage {
     position: relative;
-    width: 470px;
-    height: 470px;
+    width: 260px;
+    height: 260px;
     margin: 0;
     display: flex;
     align-items: center;
@@ -2182,8 +2182,8 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 460px;
-    height: 460px;
+    width: 250px;
+    height: 250px;
     border-radius: 50%;
     background: radial-gradient(circle, rgba(204, 32, 16, 0.25) 0%, rgba(135, 206, 235, 0.12) 40%, rgba(212, 96, 122, 0.06) 60%, transparent 75%);
     animation: pokeHaloBreathe 3.2s ease-in-out infinite;
@@ -2195,11 +2195,11 @@ body {
     50% { transform: translate(-50%, -50%) scale(1.14); opacity: 1; }
 }
 
-/* Pokéball - Alineación perfecta */
+/* Pokéball - 30% más pequeña */
 .poke-ball-wrap {
     position: relative;
-    width: 420px;
-    height: 420px;
+    width: 220px;
+    height: 220px;
     cursor: pointer;
     filter: drop-shadow(0 14px 38px rgba(204, 32, 16, 0.54));
     transition: filter 0.4s cubic-bezier(0.4, 0, 0.2, 1), transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -2214,8 +2214,8 @@ body {
 }
 
 .poke-ball {
-    width: 420px;
-    height: 420px;
+    width: 220px;
+    height: 220px;
     position: relative;
     display: flex;
     align-items: center;
@@ -2236,63 +2236,9 @@ body {
 .poke-half {
     position: absolute;
     left: 0;
-    width: 420px;
-    height: 210px;
+    width: 220px;
+    height: 110px;
     overflow: hidden;
-}
-
-.poke-h-top {
-    top: 0;
-}
-
-.poke-h-bot {
-    bottom: 0;
-}
-
-.poke-h-top .poke-fill {
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: radial-gradient(ellipse 62% 56% at 30% 26%, #ff7252 0%, #cc2010 50%, #7a1008 100%);
-}
-
-.poke-h-bot .poke-fill {
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background: radial-gradient(ellipse 56% 52% at 66% 72%, #fffaf4 0%, #f2ede8 50%, #c4bcb4 100%);
-}
-
-.poke-band {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 100%;
-    height: 30px;
-    background: #0a0a0a;
-    z-index: 5;
-}
-
-.poke-btn {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 36% 32%, #fff 0%, #e4e0da 52%, #b0a8a0 100%);
-    border: 8px solid #0a0a0a;
-    z-index: 10;
-    box-shadow: 0 0 0 2px #0a0a0a, 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(135, 206, 235, 0.25);
-    animation: pokeBtnPulse 2.8s 2s ease-in-out infinite;
 }
 
 .poke-h-top {
@@ -2305,23 +2251,22 @@ body {
     transform-origin: 50% 0;
 }
 
-.poke-h-top .poke-fill {
-    width: 420px;
-    height: 420px;
+.poke-h-top .poke-fill,
+.poke-h-bot .poke-fill {
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     position: absolute;
-    top: 0;
     left: 0;
+}
+
+.poke-h-top .poke-fill {
+    top: 0;
     background: radial-gradient(ellipse 62% 56% at 30% 26%, #ff7252 0%, #cc2010 50%, #7a1008 100%);
 }
 
 .poke-h-bot .poke-fill {
-    width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    position: absolute;
     bottom: 0;
-    left: 0;
     background: radial-gradient(ellipse 56% 52% at 66% 72%, #fffaf4 0%, #f2ede8 50%, #c4bcb4 100%);
 }
 
@@ -2331,7 +2276,7 @@ body {
     left: 0;
     transform: translateY(-50%);
     width: 100%;
-    height: 30px;
+    height: 12px;
     background: #0a0a0a;
     z-index: 5;
 }
@@ -2341,11 +2286,11 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80px;
-    height: 80px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: radial-gradient(circle at 36% 32%, #fff 0%, #e4e0da 52%, #b0a8a0 100%);
-    border: 8px solid #0a0a0a;
+    border: 5px solid #0a0a0a;
     z-index: 10;
     box-shadow: 0 0 0 2px #0a0a0a, 0 0 20px rgba(255, 255, 255, 0.3), 0 0 40px rgba(135, 206, 235, 0.25);
     animation: pokeBtnPulse 2.8s 2s ease-in-out infinite;
@@ -2400,8 +2345,8 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 420px;
-    height: 420px;
+    width: 220px;
+    height: 220px;
     border-radius: 50%;
     transform: translate(-50%, -50%) scale(0);
     opacity: 0;
@@ -2427,7 +2372,7 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -58%) scale(0.38);
+    transform: translate(-50%, -58%) scale(0.42);
     opacity: 0;
     pointer-events: none;
     transform-origin: 50% 100%;
@@ -2435,7 +2380,7 @@ body {
 }
 
 .poke-ring-wrap svg {
-    width: 170px;
+    width: 190px;
     height: auto;
 }
 
@@ -2650,13 +2595,13 @@ body {
 
 @media (max-width: 600px) {
     .poke-card { padding: 40px 20px 50px; }
-    .poke-stage { width: 350px; height: 350px; display: flex; align-items: center; justify-content: center; }
-    .poke-halo { width: 400px; height: 400px; }
-    .poke-ball-wrap { width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
-    .poke-ball { width: 280px; height: 280px; display: flex; align-items: center; justify-content: center; }
-    .poke-half { width: 280px; height: 140px; }
-    .poke-h-top .poke-fill, .poke-h-bot .poke-fill { width: 280px; height: 280px; }
-    .poke-band { height: 18px; }
-    .poke-btn { width: 50px; height: 50px; border-width: 6px; }
-    .poke-e-ring { width: 280px; height: 280px; }
+    .poke-stage { width: 250px; height: 250px; display: flex; align-items: center; justify-content: center; }
+    .poke-halo { width: 240px; height: 240px; }
+    .poke-ball-wrap { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; }
+    .poke-ball { width: 180px; height: 180px; display: flex; align-items: center; justify-content: center; }
+    .poke-half { width: 180px; height: 90px; }
+    .poke-h-top .poke-fill, .poke-h-bot .poke-fill { width: 180px; height: 180px; }
+    .poke-band { height: 12px; }
+    .poke-btn { width: 32px; height: 32px; border-width: 4px; }
+    .poke-e-ring { width: 180px; height: 180px; }
 }
