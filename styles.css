@@ -1186,9 +1186,9 @@ body {
     text-align: center;
     min-height: 400px;
     z-index: 1;
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+    display: block;
+    visibility: visible;
+    opacity: 1;
     position: relative;
 }
 
@@ -1379,9 +1379,9 @@ body {
     padding: 35px 25px;
     text-align: center;
     transition: all 0.4s ease;
-    display: block !important;
-    opacity: 1 !important;
-    visibility: visible !important;
+    display: block;
+    opacity: 1;
+    visibility: visible;
     position: relative;
     z-index: 2;
 }
@@ -1539,8 +1539,106 @@ body {
 }
 
 /* ================================
+   VESTIMENTA
+ =============================== */
+.vestimenta {
+    background: linear-gradient(180deg, var(--navy-light) 0%, var(--navy) 50%, var(--navy-light) 100%);
+    padding: 70px 0;
+    text-align: center;
+    position: relative;
+}
+
+.vestimenta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 40%, rgba(135, 206, 235, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 70% 60%, rgba(91, 164, 212, 0.06) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.vestimenta .container {
+    position: relative;
+    z-index: 1;
+}
+
+.vestimenta .section-title {
+    color: #fff;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.vestimenta-intro {
+    color: rgba(255,255,255,0.7);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 40px;
+}
+
+.vestimenta-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.vestimenta-card {
+    background: rgba(255,255,255,0.95);
+    border: 1px solid rgba(135, 206, 235, 0.3);
+    border-radius: 16px;
+    padding: 30px 25px;
+    width: 250px;
+    transition: all 0.3s ease;
+}
+
+.vestimenta-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--sky-main);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.vestimenta-icon {
+    width: 55px;
+    height: 55px;
+    margin: 0 auto 15px;
+    background: linear-gradient(135deg, var(--sky-main), var(--sky-bright));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.vestimenta-card h3 {
+    color: var(--navy);
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.vestimenta-card p {
+    color: #555;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .vestimenta-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .vestimenta-card {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* ================================
    REGALOS
-=============================== */
+ =============================== */
 .regalos {
     background: linear-gradient(180deg, var(--navy) 0%, #0f1a2e 100%);
     text-align: center;
